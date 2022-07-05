@@ -10,10 +10,13 @@ ABrick::ABrick()
 	PrimaryActorTick.bCanEverTick = true;
 
 	RootScene = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
+	if (!ensure(RootScene != nullptr)) return;
 	RootComponent = RootScene;
 
 	MeshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MeshComp"));
+	if (!ensure(MeshComp != nullptr)) return;
 	MeshComp->SetSimulatePhysics(true);
+	MeshComp->SetupAttachment(RootComponent);
 
 }
 
