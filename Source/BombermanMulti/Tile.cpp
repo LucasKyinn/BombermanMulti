@@ -17,7 +17,7 @@ ATile::ATile()
 	RootComponent = RootScene;
 
 	MeshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MeshComp"));
-	MeshComp->SetSimulatePhysics(true);
+	MeshComp->SetSimulatePhysics(false);
 	if (!ensure(MeshComp != nullptr)) return;
 	MeshComp->SetupAttachment(RootComponent);
 
