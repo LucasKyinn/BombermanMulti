@@ -3,7 +3,7 @@
 
 #include "Tile.h"
 #include "Kismet/GameplayStatics.h"
-
+#include "Math/UnrealMathUtility.h"
 #include "Brick.h"
 #include <Components/BoxComponent.h>
 
@@ -30,11 +30,6 @@ ATile::ATile()
 	MatType = 0;
 }
 
-ATile::ATile(int OTileType,int OMatType) : ATile()
-{
-	MatType = OMatType;
-	TileType = OTileType;
-}
 
 // Called when the game starts or when spawned
 void ATile::BeginPlay()
@@ -56,9 +51,14 @@ void ATile::BeginPlay()
 					World->SpawnActor<ABrick>(UnbreakabkeBrick, Location, Rotator, SpawnParams);
 				}
 				if (TileType == 2) {
-					FVector Location = GetActorLocation()+FVector(0.f,0.f,20.f);
+					int32 Temp = FMath::RandRange(0, 100);
+					GEngine->AddOnScreenDebugMessage(0, 5.f, FColor::Red, FString::Printf(TEXT("RandRes: %d"), Temp));
+					if (Temp <= 80) {
+						FVector Location = GetActorLocation()+FVector(0.f,0.f,20.f);
 
-					World->SpawnActor<ABrick>(Brick, Location, Rotator, SpawnParams);
+						World->SpawnActor<ABrick>(Brick, Location, Rotator, SpawnParams);
+					}
+
 				}
 			}
 		}

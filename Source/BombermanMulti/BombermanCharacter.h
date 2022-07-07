@@ -26,6 +26,9 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Components")
 	TSubclassOf<class ABomb> BombClass;
 
+	UPROPERTY(EditAnywhere, Category = "Components")
+	TSubclassOf<class ATile> TileClass;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

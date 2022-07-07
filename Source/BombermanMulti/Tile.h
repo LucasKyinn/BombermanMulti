@@ -15,8 +15,6 @@ public:
 	// Sets default values for this actor's properties
 	ATile();
 
-	ATile(int OTileType, int OMatType);
-
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
