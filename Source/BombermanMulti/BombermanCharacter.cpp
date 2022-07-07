@@ -3,7 +3,10 @@
 
 #include "BombermanCharacter.h"
 #include "Bomb.h"
+#include "Tile.h"
 #include "Kismet/GameplayStatics.h"
+#include "DrawDebugHelpers.h"
+
 #include "GameFramework/CharacterMovementComponent.h"
 
 
@@ -77,15 +80,30 @@ void ABombermanCharacter::MoveRight(float Value)
 void ABombermanCharacter::Bomb()
 {
 	UAnimInstance* AnimeInstance = GetMesh()->GetAnimInstance();
-	if (BombClass != nullptr && AnimeInstance != nullptr && BombPlacementAnim != nullptr) {
+	if (BombClass != nullptr && AnimeInstance != nullptr && BombPlacementAnim != nullptr && TileClass != nullptr) {
 		AnimeInstance->Montage_Play(BombPlacementAnim,1.0f);
+		
+		// Nearest Tile
+		TSet<AActor*> OverlappingActors;
+		float NearsetDistance = 300.f;
+		AActor* NearestActor = this; //Risqué mais dans le contexte on est perma en contacte avec une Tile
+
+		GetOverlappingActors(OverlappingActors, TileClass);
+		for (AActor* Actor : OverlappingActors) {
+			float ActorDist = Actor->GetDistanceTo(this);
+			if (NearsetDistance > ActorDist) {
+				NearsetDistance = ActorDist;
+				NearestActor = Actor;
+			}
+		}
 		UWorld* World = GetWorld();
 		if (World != nullptr) {
-			//Temporary Spawn Method
-			ABomb* SpawnedBomb = GetWorld()->SpawnActorDeferred<ABomb>(BombClass,FTransform(), this);
+			FTransform BombSpawnTransform = NearestActor->GetTransform();
+			BombSpawnTransform.SetLocation(NearestActor->GetActorLocation() + FVector(0.f,0.f,45.f));
+			ABomb* SpawnedBomb = World->SpawnActorDeferred<ABomb>(BombClass, BombSpawnTransform, this);
 			APlayerController* MyController = Cast<APlayerController>(GetController());
-			if (MyController != nullptr) SpawnedBomb->Owner = this;
-			UGameplayStatics::FinishSpawningActor(SpawnedBomb, GetTransform());
+			if (MyController != nullptr) SpawnedBomb->Owner = this; //Inutile car dans SpawnACtorDeffered ?
+			UGameplayStatics::FinishSpawningActor(SpawnedBomb, BombSpawnTransform);
 		}
 	}
 }
