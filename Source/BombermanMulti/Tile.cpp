@@ -5,6 +5,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Math/UnrealMathUtility.h"
 #include "Brick.h"
+#include "Bomb.h"
 #include <Components/BoxComponent.h>
 
 
@@ -76,5 +77,32 @@ void ATile::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+void ATile::SpawnBomb(AController* OwnerController, int Puissance)
+{
+	//	APlayerController* MyController = Cast<APlayerController>(GetController()); le cast pour plus tard smiley face
+
+	UWorld* World = GetWorld();
+	if (World != nullptr && BombClass != nullptr && bAsBomb == false) {
+		FTransform BombSpawnTransform = GetTransform();
+		BombSpawnTransform.SetLocation(GetActorLocation() + FVector(0.f, 0.f, 45.f));
+		ABomb* SpawnedBomb = World->SpawnActorDeferred<ABomb>(BombClass, BombSpawnTransform, OwnerController);
+		SpawnedBomb->Owner = OwnerController;
+		SpawnedBomb->PosX = PosX;
+		SpawnedBomb->PosY = PosY;
+		SpawnedBomb->Puissance = Puissance;
+
+		UGameplayStatics::FinishSpawningActor(SpawnedBomb, BombSpawnTransform);
+		bAsBomb = true;
+		Bomb = SpawnedBomb; 
+
+		//Start Timer For bAsBomb To fade ;
+	}
+}
+
+bool ATile::AsBomb()
+{
+	return bAsBomb;
 }
 

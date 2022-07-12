@@ -27,10 +27,14 @@ protected:
 
 	int Timer;
 
+
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	class ABombermanCharacter* Owner;
-
+	class AController* Owner;
+	int PosX;
+	int PosY;
+	int Puissance;
 };

@@ -63,7 +63,7 @@ void AMapGenerator::GenerateMap()
 			ATile* SpawnedTile = GetWorld()->SpawnActorDeferred<ATile>(TileClass, TileSpawnTransform, this);
 			SpawnedTile->PosX = PosX; 
 			SpawnedTile->PosY = PosY;
-			SpawnedTile->TileType = FileContent[Poof]-48; //Ugly but it works cant make TCString::Atoi work so whatever
+			SpawnedTile->TileType = FileContent[Poof]-48; //Ugly but it works cant make TCString::Atoi work so whatever 
 			SpawnedTile->MatType = Mat;
 
 			UE_LOG(LogTemp, Warning, TEXT("(%d,%d) Res: %c"), PosX, PosY, FileContent[Poof]);

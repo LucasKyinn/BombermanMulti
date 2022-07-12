@@ -111,15 +111,18 @@ void ABombermanCharacter::Bomb()
 
 void ABombermanCharacter::SpawnBomb(AActor* NearestActor)
 {
-	UWorld* World = GetWorld();
-	if (World != nullptr) {
-		FTransform BombSpawnTransform = NearestActor->GetTransform();
-		BombSpawnTransform.SetLocation(NearestActor->GetActorLocation() + FVector(0.f, 0.f, 45.f));
-
-		ABomb* SpawnedBomb = World->SpawnActorDeferred<ABomb>(BombClass, BombSpawnTransform, this);
-		APlayerController* MyController = Cast<APlayerController>(GetController());
-		if (MyController != nullptr) SpawnedBomb->Owner = this; //Inutile car dans SpawnACtorDeffered ?
-		UGameplayStatics::FinishSpawningActor(SpawnedBomb, BombSpawnTransform);
-		GetCharacterMovement()->Activate();
+	if (NearestActor == this) {
+		UE_LOG(LogTemp, Warning, TEXT("No Tiles near"));
+		return;
 	}
+	ATile* NearestTile = Cast<ATile>(NearestActor);
+	if (NearestTile != nullptr) {
+		if (NearestTile->AsBomb()) {
+			GEngine->AddOnScreenDebugMessage(0, 2.f, FColor::Red, TEXT("AlreadyAsABomb"));
+			GetCharacterMovement()->Activate();
+			return;
+		}
+		NearestTile->SpawnBomb(GetController());
+	}
+	GetCharacterMovement()->Activate();
 }
