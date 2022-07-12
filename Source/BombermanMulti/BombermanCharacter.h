@@ -39,4 +39,8 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Anime, meta = (AllowPrivateAccess = "true"))
 	UAnimMontage* BombPlacementAnim;
 
+private:
+	UFUNCTION()
+	void SpawnBomb(AActor* NearestActor);
+
 };

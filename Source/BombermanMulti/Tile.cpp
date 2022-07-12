@@ -28,6 +28,8 @@ ATile::ATile()
 
 	TileType = 0;
 	MatType = 0;
+	PosX = 0;
+	PosY = 0;
 }
 
 

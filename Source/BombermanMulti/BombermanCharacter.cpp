@@ -55,6 +55,7 @@ void ABombermanCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInput
 
 }
 
+
 void ABombermanCharacter::MoveForward(float Value)
 {
 	if ((Controller != nullptr && Value != 0.0f)) {
@@ -81,8 +82,9 @@ void ABombermanCharacter::Bomb()
 {
 	UAnimInstance* AnimeInstance = GetMesh()->GetAnimInstance();
 	if (BombClass != nullptr && AnimeInstance != nullptr && BombPlacementAnim != nullptr && TileClass != nullptr) {
+		GetCharacterMovement()->Deactivate();
 		AnimeInstance->Montage_Play(BombPlacementAnim,1.0f);
-		
+
 		// Nearest Tile
 		TSet<AActor*> OverlappingActors;
 		float NearsetDistance = 300.f;
@@ -96,14 +98,28 @@ void ABombermanCharacter::Bomb()
 				NearestActor = Actor;
 			}
 		}
-		UWorld* World = GetWorld();
-		if (World != nullptr) {
-			FTransform BombSpawnTransform = NearestActor->GetTransform();
-			BombSpawnTransform.SetLocation(NearestActor->GetActorLocation() + FVector(0.f,0.f,45.f));
-			ABomb* SpawnedBomb = World->SpawnActorDeferred<ABomb>(BombClass, BombSpawnTransform, this);
-			APlayerController* MyController = Cast<APlayerController>(GetController());
-			if (MyController != nullptr) SpawnedBomb->Owner = this; //Inutile car dans SpawnACtorDeffered ?
-			UGameplayStatics::FinishSpawningActor(SpawnedBomb, BombSpawnTransform);
-		}
+
+		FTimerDelegate TimerDel;
+
+		FTimerHandle TimerHandle;
+
+		TimerDel.BindUFunction(this, FName("SpawnBomb"), NearestActor);
+		GetWorldTimerManager().SetTimer(TimerHandle,TimerDel, .5f, false);
+
+	}
+}
+
+void ABombermanCharacter::SpawnBomb(AActor* NearestActor)
+{
+	UWorld* World = GetWorld();
+	if (World != nullptr) {
+		FTransform BombSpawnTransform = NearestActor->GetTransform();
+		BombSpawnTransform.SetLocation(NearestActor->GetActorLocation() + FVector(0.f, 0.f, 45.f));
+
+		ABomb* SpawnedBomb = World->SpawnActorDeferred<ABomb>(BombClass, BombSpawnTransform, this);
+		APlayerController* MyController = Cast<APlayerController>(GetController());
+		if (MyController != nullptr) SpawnedBomb->Owner = this; //Inutile car dans SpawnACtorDeffered ?
+		UGameplayStatics::FinishSpawningActor(SpawnedBomb, BombSpawnTransform);
+		GetCharacterMovement()->Activate();
 	}
 }

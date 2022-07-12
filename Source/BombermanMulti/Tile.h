@@ -41,17 +41,22 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Components")
 	TSubclassOf<class ABrick> Brick;
 
-private:
-	UPROPERTY(EditAnywhere, Category = "Components")
-	int MatType=0 ;
 
-	UPROPERTY(EditAnywhere, Category = "Components")
-	int TileType = 0;
 
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UPROPERTY(EditAnywhere, Category = "Components")
+	int MatType = 0;
 
+	UPROPERTY(EditAnywhere, Category = "Components")
+	int TileType = 0;
+
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	int32 PosX;
+
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	int32 PosY;
 
 };
