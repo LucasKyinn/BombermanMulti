@@ -22,7 +22,7 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Components")
 	TSubclassOf<class ATile> TileClass;
 	
-	TArray<TArray<TSubclassOf<class ATile>>> TilesArray;
+	TArray<TArray<class ATile*>> TilesArray;
 
 	void GenerateMap();
 public:	

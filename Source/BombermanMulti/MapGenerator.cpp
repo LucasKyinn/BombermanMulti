@@ -44,11 +44,11 @@ void AMapGenerator::BeginPlay()
 
 void AMapGenerator::GenerateMap()
 {
-	int PosX = 0, PosY = 0;
-	FVector SpawnLocation(0.f,0.f,0.f);
+	int PosX = 0, PosY = 0 , Mat = 0 , Poof = 0;
+	FVector SpawnLocation(-600.f,-500.f,0.f);
 	FActorSpawnParameters SpawnParam;
 	SpawnParam.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-	TArray<TSubclassOf<ATile>> Temp; 
+	TArray<ATile*> Temp; 
 
 	for (int i = 0; i < BoardSizeW; i++) 
 	{
@@ -63,18 +63,29 @@ void AMapGenerator::GenerateMap()
 			ATile* SpawnedTile = GetWorld()->SpawnActorDeferred<ATile>(TileClass, TileSpawnTransform, this);
 			SpawnedTile->PosX = PosX; 
 			SpawnedTile->PosY = PosY;
-			SpawnedTile->TileType = 0;
-			SpawnedTile->MatType = 0; 
+			SpawnedTile->TileType = FileContent[Poof]-48; //Ugly but it works cant make TCString::Atoi work so whatever
+			SpawnedTile->MatType = Mat;
+
+			UE_LOG(LogTemp, Warning, TEXT("(%d,%d) Res: %c"), PosX, PosY, FileContent[Poof]);
+
 			UGameplayStatics::FinishSpawningActor(SpawnedTile, TileSpawnTransform);
 
 			//Add to Array :
-			//Temp.Add(SpawnedTile);
+			Temp.Add(SpawnedTile);
 
 			//Evolution :
-
-
+			SpawnLocation.X += 100;
+			PosX += 1;
+			Mat = (Mat + 1) % 2;
+			Poof++;
 
 		}
+		//Evolution
+		PosX = 0;
+		PosY += 1;
+		SpawnLocation.X = -600;
+		SpawnLocation.Y += 100;
+		TilesArray.Add(Temp);
 	}
 
 }

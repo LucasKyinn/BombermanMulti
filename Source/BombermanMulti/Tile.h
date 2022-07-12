@@ -51,7 +51,7 @@ public:
 	int MatType = 0;
 
 	UPROPERTY(EditAnywhere, Category = "Components")
-	int TileType = 0;
+	int32 TileType = 0;
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	int32 PosX;
