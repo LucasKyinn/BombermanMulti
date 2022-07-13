@@ -6,7 +6,7 @@
 #include "Tile.h"
 #include "Kismet/GameplayStatics.h"
 #include "DrawDebugHelpers.h"
-
+#include "DamageComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
 
@@ -15,6 +15,7 @@ ABombermanCharacter::ABombermanCharacter()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	HealthThing = CreateDefaultSubobject<UDamageComponent>("DamageComponent");
 
 }
 
@@ -108,7 +109,7 @@ void ABombermanCharacter::Bomb()
 			GetWorldTimerManager().SetTimer(TimerHandle, TimerDel, .5f, false);
 
 		}
-		GetWorldTimerManager().SetTimer(BombCooldown,4.f,false);
+		GetWorldTimerManager().SetTimer(BombCooldown,2.f,false);
 	}
 	else {
 		if (OnCDSound != nullptr ) {
