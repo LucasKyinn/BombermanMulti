@@ -50,7 +50,10 @@ protected:
 	class ABomb* Bomb;
 
 	UFUNCTION()
-	void DelegatedRemoveHealth(class UDamageComponent* BombDamageComp, int Damage = 1);
+	void DelegatedRemoveHealth(class UDamageComponent* DamageComp, int Damage = 1);
+
+	UPROPERTY(EditAnywhere, Category = Particles)
+	class UParticleSystem* ExplosionParticles;
 
 public:	
 	// Called every frame
@@ -71,4 +74,9 @@ public:
 	void SpawnBomb(AController* OwnerController, int Puissance = 1);
 
 	bool AsBomb();
+
+	class AMapGenerator* MapGenerator;
+
+	void Explode();
+
 };

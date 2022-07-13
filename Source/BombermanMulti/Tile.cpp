@@ -7,6 +7,8 @@
 #include "Brick.h"
 #include "Bomb.h"
 #include "DamageComponent.h"
+#include "MapGenerator.h"
+#include "BombermanCharacter.h"
 #include <Components/BoxComponent.h>
 
 
@@ -41,8 +43,6 @@ void ATile::BeginPlay()
 	Super::BeginPlay();
 
 	if (TileType != 0) {
-		CollisionBox->Deactivate();
-
 		if (UnbreakabkeBrick != nullptr && Brick !=nullptr) {
 			UWorld* World = GetWorld();
 			if (World != nullptr) {
@@ -50,13 +50,14 @@ void ATile::BeginPlay()
 				SpawnParams.Owner = this;
 				FRotator Rotator;
 				if (TileType == 1) {
+					CollisionBox->Deactivate();
 					FVector Location = GetActorLocation();
 
 					World->SpawnActor<ABrick>(UnbreakabkeBrick, Location, Rotator, SpawnParams);
 				}
 				if (TileType == 2) {
 					int32 Temp = FMath::RandRange(0, 100);
-					GEngine->AddOnScreenDebugMessage(0, 5.f, FColor::Red, FString::Printf(TEXT("RandRes: %d"), Temp));
+					//GEngine->AddOnScreenDebugMessage(0, 5.f, FColor::Red, FString::Printf(TEXT("RandRes: %d"), Temp));
 					if (Temp <= 80) {
 						FVector Location = GetActorLocation()+FVector(0.f,0.f,20.f);
 
@@ -81,10 +82,11 @@ void ATile::Tick(float DeltaTime)
 
 }
 
-void ATile::DelegatedRemoveHealth(UDamageComponent* BombDamageComp, int Damage)
+void ATile::DelegatedRemoveHealth(UDamageComponent* DamageComp, int Damage)
 {
 	bAsBomb = false;
-	BombDamageComp->RemoveHealth(Damage);
+	DamageComp->RemoveHealth(Damage);
+	MapGenerator->TriggerExplosion(PosX, PosY, 2, 'A');
 }
 
 
@@ -127,5 +129,42 @@ void ATile::SpawnBomb(AController* OwnerController, int Puissance)
 bool ATile::AsBomb()
 {
 	return bAsBomb;
+}
+
+void ATile::Explode()
+{
+	if (TileType != 1) { //Tiles Type 1 are indestructible
+		if (ExplosionParticles != nullptr) {
+			UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ExplosionParticles, GetActorTransform());
+		}
+		if (TileType == 2) { // Have a Brick on it
+			//Ugly as F
+			TSet<AActor*> OverlappingActors;
+			CollisionBox->GetOverlappingActors(OverlappingActors, ABrick::StaticClass());
+			for (AActor* Actor : OverlappingActors) {
+				ABrick* Char = Cast<ABrick>(Actor);
+				if (Char != nullptr) {
+					UDamageComponent* CharDamageComp = Cast<UDamageComponent>(Char->GetComponentByClass(UDamageComponent::StaticClass()));
+					if (CharDamageComp != nullptr) {
+						CharDamageComp->RemoveHealth(1);
+					}
+				}
+			}
+			TileType = 0;
+		}
+		//Deal damage to ppl on it
+		TSet<AActor*> OverlappingActors;
+		CollisionBox->GetOverlappingActors(OverlappingActors, ABombermanCharacter::StaticClass());
+		for (AActor* Actor : OverlappingActors) {
+			ABombermanCharacter* Char = Cast<ABombermanCharacter>(Actor);
+			if (Char != nullptr) {
+				UDamageComponent* CharDamageComp = Cast<UDamageComponent>(Char->GetComponentByClass(UDamageComponent::StaticClass()));
+				if (CharDamageComp != nullptr) {
+					CharDamageComp->RemoveHealth(1);
+				}
+			}
+		}
+	}
+
 }
 

@@ -24,6 +24,11 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	UStaticMeshComponent* MeshComp;
+
+	UPROPERTY(VisibleAnywhere, BluePrintReadOnly)
+	class UDamageComponent* HealthThing;
+
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

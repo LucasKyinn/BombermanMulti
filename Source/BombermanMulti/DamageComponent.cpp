@@ -2,6 +2,8 @@
 
 
 #include "DamageComponent.h"
+#include "Kismet/GameplayStatics.h"
+
 
 // Sets default values for this component's properties
 UDamageComponent::UDamageComponent()
@@ -24,6 +26,10 @@ void UDamageComponent::BeginPlay()
 bool UDamageComponent::RemoveHealth(int Damage)
 {
 	Health -= Damage;
+	if (Damagetaken != nullptr) {
+		UGameplayStatics::PlaySoundAtLocation(this, Damagetaken, GetOwner()->GetActorLocation(), 1.0f, 1.f, 0.f);
+	}
+
 	return IsDead();
 }
 

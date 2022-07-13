@@ -65,8 +65,9 @@ void AMapGenerator::GenerateMap()
 			SpawnedTile->PosY = PosY;
 			SpawnedTile->TileType = FileContent[Poof]-48; //Ugly but it works cant make TCString::Atoi work so whatever 
 			SpawnedTile->MatType = Mat;
+			SpawnedTile->MapGenerator = this;
 
-			UE_LOG(LogTemp, Warning, TEXT("(%d,%d) Res: %c"), PosX, PosY, FileContent[Poof]);
+			//UE_LOG(LogTemp, Warning, TEXT("(%d,%d) Res: %c"), PosX, PosY, FileContent[Poof]);
 
 			UGameplayStatics::FinishSpawningActor(SpawnedTile, TileSpawnTransform);
 
@@ -75,19 +76,48 @@ void AMapGenerator::GenerateMap()
 
 			//Evolution :
 			SpawnLocation.X += 100;
-			PosX += 1;
+			PosY += 1;
 			Mat = (Mat + 1) % 2;
 			Poof++;
 
 		}
 		//Evolution
-		PosX = 0;
-		PosY += 1;
+		PosY = 0;
+		PosX += 1;
 		SpawnLocation.X = -600;
 		SpawnLocation.Y += 100;
 		TilesArray.Add(Temp);
 	}
 
+}
+
+void AMapGenerator::TriggerExplosion(int X, int Y, int Puissance, char Dir)
+{
+	UE_LOG(LogTemp, Warning, TEXT("TriggerExplosion"));
+
+	//l'explosion est suffisament puissante
+	if (Puissance >= 0 ) {
+		UE_LOG(LogTemp, Warning, TEXT("Puissance sup 0"));
+
+		//Explosion ne sort pas du tableau
+		if (X >= 0 && X < BoardSizeW && Y >= 0 && Y < BoardSizeL && TilesArray[X][Y]->TileType != 1) {
+			UE_LOG(LogTemp, Warning, TEXT("InBound"));
+
+			TilesArray[X][Y]->Explode();
+			if (Dir == 'A') {
+				//All Direction
+				TriggerExplosion(X-1, Y, Puissance - 1, 'U');
+				TriggerExplosion(X+1, Y, Puissance - 1, 'D');
+				TriggerExplosion(X, Y-1, Puissance - 1, 'L');
+				TriggerExplosion(X, Y+1, Puissance - 1, 'R');
+			}
+			if (Dir == 'U') TriggerExplosion(X - 1, Y, Puissance - 1, 'U'); //Up
+			if (Dir == 'D')TriggerExplosion(X + 1, Y, Puissance - 1, 'D');	//Down
+			if (Dir == 'L')TriggerExplosion(X, Y - 1, Puissance - 1, 'L');	//Left
+			if (Dir == 'R')TriggerExplosion(X, Y + 1, Puissance - 1, 'R');	//Right
+
+		}
+	}
 }
 
 // Called every frame

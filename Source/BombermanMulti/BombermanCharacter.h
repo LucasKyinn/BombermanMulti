@@ -32,6 +32,9 @@ protected:
 	UPROPERTY(EditAnywhere, Category = Sound)
 	class USoundBase* OnCDSound;
 
+	UPROPERTY(VisibleAnywhere, BluePrintReadOnly)
+	class UDamageComponent* HealthThing;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

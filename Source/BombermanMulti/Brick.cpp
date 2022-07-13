@@ -2,6 +2,8 @@
 
 
 #include "Brick.h"
+#include "DamageComponent.h"
+
 
 // Sets default values
 ABrick::ABrick()
@@ -18,6 +20,8 @@ ABrick::ABrick()
 	MeshComp->SetSimulatePhysics(true);
 	MeshComp->SetupAttachment(RootComponent);
 
+	HealthThing = CreateDefaultSubobject<UDamageComponent>("DamageComponent");
+
 }
 
 // Called when the game starts or when spawned
@@ -31,6 +35,8 @@ void ABrick::BeginPlay()
 void ABrick::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	if (HealthThing->IsDead()) {
+		Destroy();
+	}
 }
 

@@ -25,6 +25,10 @@ protected:
 
 	bool bIsDead = false;
 
+
+	UPROPERTY(EditAnywhere, Category = Sound)
+	class USoundBase* Damagetaken;
+
 public:	
 
 	//Remove X HP and return if dead

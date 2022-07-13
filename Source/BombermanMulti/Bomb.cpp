@@ -30,10 +30,10 @@ ABomb::ABomb()
 void ABomb::BeginPlay()
 {
 	Super::BeginPlay();
-	if (Owner != nullptr)
-		GEngine->AddOnScreenDebugMessage(0, 3.f, FColor::Red, TEXT("Has Owner"));
-	else 
-		GEngine->AddOnScreenDebugMessage(0, 3.f, FColor::Red, TEXT("No Owner Bug !"));
+	//if (Owner != nullptr)
+	//	GEngine->AddOnScreenDebugMessage(0, 3.f, FColor::Red, TEXT("Has Owner"));
+	//else 
+	//	GEngine->AddOnScreenDebugMessage(0, 3.f, FColor::Red, TEXT("No Owner Bug !"));
 }
 
 // Called every frame
@@ -42,7 +42,7 @@ void ABomb::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	if (HealthThing->IsDead()) {
-		GEngine->AddOnScreenDebugMessage(0, 2.f, FColor::Red, TEXT("DEAD"));
+		//GEngine->AddOnScreenDebugMessage(0, 2.f, FColor::Red, TEXT("DEAD"));
 
 		//Effects
 		if (ExplosionSound != nullptr && ExplosionParticles!=nullptr) {
