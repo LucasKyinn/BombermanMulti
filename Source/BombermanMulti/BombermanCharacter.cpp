@@ -113,6 +113,7 @@ void ABombermanCharacter::SpawnBomb(AActor* NearestActor)
 {
 	if (NearestActor == this) {
 		UE_LOG(LogTemp, Warning, TEXT("No Tiles near"));
+		GetCharacterMovement()->Activate();
 		return;
 	}
 	ATile* NearestTile = Cast<ATile>(NearestActor);

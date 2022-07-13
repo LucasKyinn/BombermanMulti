@@ -3,6 +3,7 @@
 
 #include "Bomb.h"
 #include "BombermanCharacter.h"
+#include "DamageComponent.h"
 
 
 // Sets default values
@@ -19,6 +20,7 @@ ABomb::ABomb()
 	if (!ensure(MeshComp != nullptr)) return;
 	MeshComp->SetupAttachment(RootComponent);
 
+	HealthThing = CreateDefaultSubobject<UDamageComponent>("DamageComponent");
 	Owner = nullptr;
 }
 
@@ -31,13 +33,18 @@ void ABomb::BeginPlay()
 		GEngine->AddOnScreenDebugMessage(0, 3.f, FColor::Red, TEXT("Has Owner"));
 	else 
 		GEngine->AddOnScreenDebugMessage(0, 3.f, FColor::Red, TEXT("No Owner Bug !"));
-
 }
 
 // Called every frame
 void ABomb::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	if (HealthThing->IsDead()) {
+		GEngine->AddOnScreenDebugMessage(0, 2.f, FColor::Red, TEXT("DEAD"));
+		Destroy();
+	}
+
 
 }
 

@@ -49,6 +49,9 @@ protected:
 
 	class ABomb* Bomb;
 
+	UFUNCTION()
+	void DelegatedRemoveHealth(class UDamageComponent* BombDamageComp, int Damage = 1);
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

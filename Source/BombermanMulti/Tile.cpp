@@ -6,6 +6,7 @@
 #include "Math/UnrealMathUtility.h"
 #include "Brick.h"
 #include "Bomb.h"
+#include "DamageComponent.h"
 #include <Components/BoxComponent.h>
 
 
@@ -72,12 +73,20 @@ void ATile::BeginPlay()
 	}
 }
 
+
 // Called every frame
 void ATile::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
 }
+
+void ATile::DelegatedRemoveHealth(UDamageComponent* BombDamageComp, int Damage)
+{
+	BombDamageComp->RemoveHealth(Damage);
+}
+
+
 
 void ATile::SpawnBomb(AController* OwnerController, int Puissance)
 {
@@ -97,7 +106,20 @@ void ATile::SpawnBomb(AController* OwnerController, int Puissance)
 		bAsBomb = true;
 		Bomb = SpawnedBomb; 
 
-		//Start Timer For bAsBomb To fade ;
+		//Start Timer For bAsBomb To explode ;
+
+		UActorComponent* Comp = SpawnedBomb->GetComponentByClass(UDamageComponent::StaticClass());
+		if (Comp != nullptr) {
+			UDamageComponent* BombDamageComp = Cast<UDamageComponent>(Comp);
+			if (BombDamageComp != nullptr) {
+				FTimerHandle TimerHandle;
+				FTimerDelegate TimerDel;
+				TimerDel.BindUFunction(this, FName("DelegatedRemoveHealth"), BombDamageComp , 1);
+
+				GetWorldTimerManager().SetTimer(TimerHandle, TimerDel, 2.5f, false);
+
+			}
+		}
 	}
 }
 

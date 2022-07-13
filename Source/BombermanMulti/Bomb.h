@@ -19,14 +19,16 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	UPROPERTY(VisibleAnywhere , Category = "Component")
+	UPROPERTY(VisibleAnywhere, BluePrintReadOnly, Category = "Components")
 	UStaticMeshComponent* MeshComp;
 
-	UPROPERTY(VisibleAnywhere, BluePrintReadOnly, Category = BreakableBlock, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(VisibleAnywhere, BluePrintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	USceneComponent* RootScene;
 
 	int Timer;
 
+	UPROPERTY(VisibleAnywhere, BluePrintReadOnly)
+	class UDamageComponent* HealthThing; 
 
 
 public:	
