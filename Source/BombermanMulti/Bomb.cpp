@@ -4,6 +4,7 @@
 #include "Bomb.h"
 #include "BombermanCharacter.h"
 #include "DamageComponent.h"
+#include <Kismet/GameplayStatics.h>
 
 
 // Sets default values
@@ -42,6 +43,12 @@ void ABomb::Tick(float DeltaTime)
 
 	if (HealthThing->IsDead()) {
 		GEngine->AddOnScreenDebugMessage(0, 2.f, FColor::Red, TEXT("DEAD"));
+
+		//Effects
+		if (ExplosionSound != nullptr && ExplosionParticles!=nullptr) {
+			UGameplayStatics::PlaySoundAtLocation(this, ExplosionSound, GetActorLocation(), 1.0f, 1.f, 0.f);
+			UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ExplosionParticles, GetActorTransform());
+		}
 		Destroy();
 	}
 

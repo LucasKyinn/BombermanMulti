@@ -83,6 +83,7 @@ void ATile::Tick(float DeltaTime)
 
 void ATile::DelegatedRemoveHealth(UDamageComponent* BombDamageComp, int Damage)
 {
+	bAsBomb = false;
 	BombDamageComp->RemoveHealth(Damage);
 }
 

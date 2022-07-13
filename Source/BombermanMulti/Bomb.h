@@ -30,6 +30,11 @@ protected:
 	UPROPERTY(VisibleAnywhere, BluePrintReadOnly)
 	class UDamageComponent* HealthThing; 
 
+	UPROPERTY(EditAnywhere, Category = Sound)
+	class USoundBase* ExplosionSound;
+
+	UPROPERTY(EditAnywhere, Category = Particles)
+	class UParticleSystem* ExplosionParticles;
 
 public:	
 	// Called every frame

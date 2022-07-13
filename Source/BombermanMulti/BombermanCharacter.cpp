@@ -81,31 +81,39 @@ void ABombermanCharacter::MoveRight(float Value)
 void ABombermanCharacter::Bomb()
 {
 	UAnimInstance* AnimeInstance = GetMesh()->GetAnimInstance();
-	if (BombClass != nullptr && AnimeInstance != nullptr && BombPlacementAnim != nullptr && TileClass != nullptr) {
-		GetCharacterMovement()->Deactivate();
-		AnimeInstance->Montage_Play(BombPlacementAnim,1.0f);
+	if (!GetWorldTimerManager().IsTimerActive(BombCooldown)) {
+		if (BombClass != nullptr && AnimeInstance != nullptr && BombPlacementAnim != nullptr && TileClass != nullptr) {
+			GetCharacterMovement()->Deactivate();
+			AnimeInstance->Montage_Play(BombPlacementAnim, 1.0f);
 
-		// Nearest Tile
-		TSet<AActor*> OverlappingActors;
-		float NearsetDistance = 300.f;
-		AActor* NearestActor = this; //Risqué mais dans le contexte on est perma en contacte avec une Tile
+			// Nearest Tile
+			TSet<AActor*> OverlappingActors;
+			float NearsetDistance = 300.f;
+			AActor* NearestActor = this; //Risqué mais dans le contexte on est perma en contacte avec une Tile
 
-		GetOverlappingActors(OverlappingActors, TileClass);
-		for (AActor* Actor : OverlappingActors) {
-			float ActorDist = Actor->GetDistanceTo(this);
-			if (NearsetDistance > ActorDist) {
-				NearsetDistance = ActorDist;
-				NearestActor = Actor;
+			GetOverlappingActors(OverlappingActors, TileClass);
+			for (AActor* Actor : OverlappingActors) {
+				float ActorDist = Actor->GetDistanceTo(this);
+				if (NearsetDistance > ActorDist) {
+					NearsetDistance = ActorDist;
+					NearestActor = Actor;
+				}
 			}
+
+			FTimerDelegate TimerDel;
+
+			FTimerHandle TimerHandle;
+
+			TimerDel.BindUFunction(this, FName("SpawnBomb"), NearestActor);
+			GetWorldTimerManager().SetTimer(TimerHandle, TimerDel, .5f, false);
+
 		}
-
-		FTimerDelegate TimerDel;
-
-		FTimerHandle TimerHandle;
-
-		TimerDel.BindUFunction(this, FName("SpawnBomb"), NearestActor);
-		GetWorldTimerManager().SetTimer(TimerHandle,TimerDel, .5f, false);
-
+		GetWorldTimerManager().SetTimer(BombCooldown,4.f,false);
+	}
+	else {
+		if (OnCDSound != nullptr ) {
+			UGameplayStatics::PlaySoundAtLocation(this, OnCDSound, GetActorLocation(), 1.0f, 1.f, 0.f);
+		}
 	}
 }
 
