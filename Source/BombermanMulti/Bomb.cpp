@@ -3,6 +3,8 @@
 
 #include "Bomb.h"
 #include "BombermanCharacter.h"
+#include "DamageComponent.h"
+#include <Kismet/GameplayStatics.h>
 
 
 // Sets default values
@@ -19,6 +21,7 @@ ABomb::ABomb()
 	if (!ensure(MeshComp != nullptr)) return;
 	MeshComp->SetupAttachment(RootComponent);
 
+	HealthThing = CreateDefaultSubobject<UDamageComponent>("DamageComponent");
 	Owner = nullptr;
 }
 
@@ -31,13 +34,24 @@ void ABomb::BeginPlay()
 		GEngine->AddOnScreenDebugMessage(0, 3.f, FColor::Red, TEXT("Has Owner"));
 	else 
 		GEngine->AddOnScreenDebugMessage(0, 3.f, FColor::Red, TEXT("No Owner Bug !"));
-
 }
 
 // Called every frame
 void ABomb::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	if (HealthThing->IsDead()) {
+		GEngine->AddOnScreenDebugMessage(0, 2.f, FColor::Red, TEXT("DEAD"));
+
+		//Effects
+		if (ExplosionSound != nullptr && ExplosionParticles!=nullptr) {
+			UGameplayStatics::PlaySoundAtLocation(this, ExplosionSound, GetActorLocation(), 1.0f, 1.f, 0.f);
+			UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ExplosionParticles, GetActorTransform());
+		}
+		Destroy();
+	}
+
 
 }
 

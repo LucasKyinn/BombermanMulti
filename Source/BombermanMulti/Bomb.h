@@ -19,18 +19,29 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	UPROPERTY(VisibleAnywhere , Category = "Component")
+	UPROPERTY(VisibleAnywhere, BluePrintReadOnly, Category = "Components")
 	UStaticMeshComponent* MeshComp;
 
-	UPROPERTY(VisibleAnywhere, BluePrintReadOnly, Category = BreakableBlock, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(VisibleAnywhere, BluePrintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	USceneComponent* RootScene;
 
 	int Timer;
+
+	UPROPERTY(VisibleAnywhere, BluePrintReadOnly)
+	class UDamageComponent* HealthThing; 
+
+	UPROPERTY(EditAnywhere, Category = Sound)
+	class USoundBase* ExplosionSound;
+
+	UPROPERTY(EditAnywhere, Category = Particles)
+	class UParticleSystem* ExplosionParticles;
 
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	class ABombermanCharacter* Owner;
-
+	class AController* Owner;
+	int PosX;
+	int PosY;
+	int Puissance;
 };

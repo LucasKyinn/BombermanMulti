@@ -55,6 +55,7 @@ void ABombermanCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInput
 
 }
 
+
 void ABombermanCharacter::MoveForward(float Value)
 {
 	if ((Controller != nullptr && Value != 0.0f)) {
@@ -80,30 +81,57 @@ void ABombermanCharacter::MoveRight(float Value)
 void ABombermanCharacter::Bomb()
 {
 	UAnimInstance* AnimeInstance = GetMesh()->GetAnimInstance();
-	if (BombClass != nullptr && AnimeInstance != nullptr && BombPlacementAnim != nullptr && TileClass != nullptr) {
-		AnimeInstance->Montage_Play(BombPlacementAnim,1.0f);
-		
-		// Nearest Tile
-		TSet<AActor*> OverlappingActors;
-		float NearsetDistance = 300.f;
-		AActor* NearestActor = this; //Risqué mais dans le contexte on est perma en contacte avec une Tile
+	if (!GetWorldTimerManager().IsTimerActive(BombCooldown)) {
+		if (BombClass != nullptr && AnimeInstance != nullptr && BombPlacementAnim != nullptr && TileClass != nullptr) {
+			GetCharacterMovement()->Deactivate();
+			AnimeInstance->Montage_Play(BombPlacementAnim, 1.0f);
 
-		GetOverlappingActors(OverlappingActors, TileClass);
-		for (AActor* Actor : OverlappingActors) {
-			float ActorDist = Actor->GetDistanceTo(this);
-			if (NearsetDistance > ActorDist) {
-				NearsetDistance = ActorDist;
-				NearestActor = Actor;
+			// Nearest Tile
+			TSet<AActor*> OverlappingActors;
+			float NearsetDistance = 300.f;
+			AActor* NearestActor = this; //Risqué mais dans le contexte on est perma en contacte avec une Tile
+
+			GetOverlappingActors(OverlappingActors, TileClass);
+			for (AActor* Actor : OverlappingActors) {
+				float ActorDist = Actor->GetDistanceTo(this);
+				if (NearsetDistance > ActorDist) {
+					NearsetDistance = ActorDist;
+					NearestActor = Actor;
+				}
 			}
+
+			FTimerDelegate TimerDel;
+
+			FTimerHandle TimerHandle;
+
+			TimerDel.BindUFunction(this, FName("SpawnBomb"), NearestActor);
+			GetWorldTimerManager().SetTimer(TimerHandle, TimerDel, .5f, false);
+
 		}
-		UWorld* World = GetWorld();
-		if (World != nullptr) {
-			FTransform BombSpawnTransform = NearestActor->GetTransform();
-			BombSpawnTransform.SetLocation(NearestActor->GetActorLocation() + FVector(0.f,0.f,45.f));
-			ABomb* SpawnedBomb = World->SpawnActorDeferred<ABomb>(BombClass, BombSpawnTransform, this);
-			APlayerController* MyController = Cast<APlayerController>(GetController());
-			if (MyController != nullptr) SpawnedBomb->Owner = this; //Inutile car dans SpawnACtorDeffered ?
-			UGameplayStatics::FinishSpawningActor(SpawnedBomb, BombSpawnTransform);
+		GetWorldTimerManager().SetTimer(BombCooldown,4.f,false);
+	}
+	else {
+		if (OnCDSound != nullptr ) {
+			UGameplayStatics::PlaySoundAtLocation(this, OnCDSound, GetActorLocation(), 1.0f, 1.f, 0.f);
 		}
 	}
+}
+
+void ABombermanCharacter::SpawnBomb(AActor* NearestActor)
+{
+	if (NearestActor == this) {
+		UE_LOG(LogTemp, Warning, TEXT("No Tiles near"));
+		GetCharacterMovement()->Activate();
+		return;
+	}
+	ATile* NearestTile = Cast<ATile>(NearestActor);
+	if (NearestTile != nullptr) {
+		if (NearestTile->AsBomb()) {
+			GEngine->AddOnScreenDebugMessage(0, 2.f, FColor::Red, TEXT("AlreadyAsABomb"));
+			GetCharacterMovement()->Activate();
+			return;
+		}
+		NearestTile->SpawnBomb(GetController());
+	}
+	GetCharacterMovement()->Activate();
 }

@@ -29,6 +29,9 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Components")
 	TSubclassOf<class ATile> TileClass;
 
+	UPROPERTY(EditAnywhere, Category = Sound)
+	class USoundBase* OnCDSound;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -38,5 +41,12 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Anime, meta = (AllowPrivateAccess = "true"))
 	UAnimMontage* BombPlacementAnim;
+
+private:
+	UFUNCTION()
+	void SpawnBomb(AActor* NearestActor);
+
+	bool bIsInCD= false; 
+	FTimerHandle BombCooldown;
 
 };

@@ -41,17 +41,34 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Components")
 	TSubclassOf<class ABrick> Brick;
 
-private:
 	UPROPERTY(EditAnywhere, Category = "Components")
-	int MatType=0 ;
+	TSubclassOf<class ABomb> BombClass;
 
-	UPROPERTY(EditAnywhere, Category = "Components")
-	int TileType = 0;
+
+	bool bAsBomb = false;
+
+	class ABomb* Bomb;
+
+	UFUNCTION()
+	void DelegatedRemoveHealth(class UDamageComponent* BombDamageComp, int Damage = 1);
 
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	int MatType = 0;
 
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	int32 TileType = 0;
 
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	int32 PosX;
+
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	int32 PosY;
+
+	void SpawnBomb(AController* OwnerController, int Puissance = 1);
+
+	bool AsBomb();
 };

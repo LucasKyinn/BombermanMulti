@@ -20,9 +20,18 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+	UPROPERTY(EditAnywhere, Category = "Components")
+	int Health = 1; 
 
+	bool bIsDead = false;
+
+public:	
+
+	//Remove X HP and return if dead
+	bool RemoveHealth(int Damage = 1); 
+
+	bool IsDead();
+
+	int GetHealth();
 		
 };
