@@ -118,6 +118,11 @@ void ABombermanCharacter::Bomb()
 	}
 }
 
+int ABombermanCharacter::GetRemainingHealth()
+{
+	return HealthThing->GetHealth();
+}
+
 void ABombermanCharacter::SpawnBomb(AActor* NearestActor)
 {
 	if (NearestActor == this) {
