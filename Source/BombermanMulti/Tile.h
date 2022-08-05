@@ -44,7 +44,7 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Components")
 	TSubclassOf<class ABomb> BombClass;
 
-
+	UPROPERTY(replicated)
 	bool bAsBomb = false;
 
 	class ABomb* Bomb;
@@ -59,16 +59,16 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UPROPERTY(VisibleAnywhere, replicated , Category = "Components")
 	int MatType = 0;
 
-	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UPROPERTY(VisibleAnywhere, replicated , Category = "Components")
 	int32 TileType = 0;
 
-	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UPROPERTY(VisibleAnywhere, replicated, Category = "Components")
 	int32 PosX;
 
-	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UPROPERTY(VisibleAnywhere, replicated, Category = "Components")
 	int32 PosY;
 
 	void SpawnBomb(AController* OwnerController, int Puissance = 1);

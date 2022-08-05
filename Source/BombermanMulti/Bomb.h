@@ -25,9 +25,7 @@ protected:
 	UPROPERTY(VisibleAnywhere, BluePrintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	USceneComponent* RootScene;
 
-	int Timer;
-
-	UPROPERTY(VisibleAnywhere, BluePrintReadOnly)
+	UPROPERTY(VisibleAnywhere,replicated, BluePrintReadOnly)
 	class UDamageComponent* HealthThing; 
 
 	UPROPERTY(EditAnywhere, Category = Sound)
@@ -41,7 +39,10 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	class AController* Owner;
+	UPROPERTY(replicated)
 	int PosX;
+	UPROPERTY(replicated)
 	int PosY;
+	UPROPERTY(replicated)
 	int Puissance;
 };

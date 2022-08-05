@@ -7,6 +7,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "DrawDebugHelpers.h"
 #include "DamageComponent.h"
+#include "Net/UnrealNetwork.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
 
@@ -17,6 +18,13 @@ ABombermanCharacter::ABombermanCharacter()
 	PrimaryActorTick.bCanEverTick = true;
 	HealthThing = CreateDefaultSubobject<UDamageComponent>("DamageComponent");
 
+}
+
+void ABombermanCharacter::GetLifetimeReplicatedProps(TArray< FLifetimeProperty >& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(ABombermanCharacter, HealthThing);
 }
 
 // Called when the game starts or when spawned

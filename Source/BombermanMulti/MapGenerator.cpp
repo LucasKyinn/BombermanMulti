@@ -11,6 +11,8 @@ AMapGenerator::AMapGenerator()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	bReplicates = true;
+	bNetLoadOnClient = true;
 
 }
 
@@ -18,28 +20,32 @@ AMapGenerator::AMapGenerator()
 void AMapGenerator::BeginPlay()
 {
 	Super::BeginPlay();
-
-	//TilesArray.Init(TArray<TSubclassOf<class ATile>>, BoardSizeW); nonono
-	//File exist (Copy pasted from the internet)
-	if (FileManager.FileExists(*File))
-	{
-		if (FFileHelper::LoadFileToString(FileContent, *File, FFileHelper::EHashOptions::None))
+	
+	if (HasAuthority()) {
+		//File exist (Copy pasted from the internet)
+		if (FileManager.FileExists(*File))
 		{
-			UE_LOG(LogTemp, Warning, TEXT("FileManipulation: Text From File: %s"), *FileContent);
+			if (FFileHelper::LoadFileToString(FileContent, *File, FFileHelper::EHashOptions::None))
+			{
+				UE_LOG(LogTemp, Warning, TEXT("FileManipulation: Text From File: %s"), *FileContent);
+			}
+			else
+			{
+				UE_LOG(LogTemp, Warning, TEXT("FileManipulation: Did not load text from file"));
+			}
 		}
 		else
 		{
-			UE_LOG(LogTemp, Warning, TEXT("FileManipulation: Did not load text from file"));
+			UE_LOG(LogTemp, Warning, TEXT("FileManipulation: ERROR: Can not read the file because it was not found."));
+			UE_LOG(LogTemp, Warning, TEXT("FileManipulation: Expected file location: %s"), *File);
 		}
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("FileManipulation: ERROR: Can not read the file because it was not found."));
-		UE_LOG(LogTemp, Warning, TEXT("FileManipulation: Expected file location: %s"), *File);
-	}
-	if (!ensure(TileClass != nullptr)) return;
+		if (!ensure(TileClass != nullptr)) return;
 
-	GenerateMap();
+		GenerateMap();
+	}
+
+	
+
 }
 
 void AMapGenerator::GenerateMap()
@@ -63,7 +69,23 @@ void AMapGenerator::GenerateMap()
 			ATile* SpawnedTile = GetWorld()->SpawnActorDeferred<ATile>(TileClass, TileSpawnTransform, this);
 			SpawnedTile->PosX = PosX; 
 			SpawnedTile->PosY = PosY;
-			SpawnedTile->TileType = FileContent[Poof]-48; //Ugly but it works cant make TCString::Atoi work so whatever 
+
+			if (FileContent[Poof] - 48 == 2) {
+				int32 RandNum = FMath::RandRange(0, 100);
+				if (RandNum <= 80) {
+					SpawnedTile->TileType = FileContent[Poof] - 48; //Ugly but it works cant make TCString::Atoi work so whatever 
+				}
+				else {
+					SpawnedTile->TileType = 0;
+				}
+			}
+			else {
+				SpawnedTile->TileType = FileContent[Poof] - 48;
+			}
+
+
+			//SpawnedTile->TileType = FileContent[Poof]-48; //Ugly but it works cant make TCString::Atoi work so whatever 
+
 			SpawnedTile->MatType = Mat;
 			SpawnedTile->MapGenerator = this;
 

@@ -32,7 +32,7 @@ protected:
 	UPROPERTY(EditAnywhere, Category = Sound)
 	class USoundBase* OnCDSound;
 
-	UPROPERTY(VisibleAnywhere, BluePrintReadOnly)
+	UPROPERTY(VisibleAnywhere,replicated, BluePrintReadOnly)
 	class UDamageComponent* HealthThing;
 
 public:	

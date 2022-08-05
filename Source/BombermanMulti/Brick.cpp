@@ -2,6 +2,7 @@
 
 
 #include "Brick.h"
+#include "Net/UnrealNetwork.h"
 #include "DamageComponent.h"
 
 
@@ -10,6 +11,8 @@ ABrick::ABrick()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	bReplicates = true;
+	bNetLoadOnClient = true;
 
 	RootScene = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 	if (!ensure(RootScene != nullptr)) return;
@@ -22,6 +25,13 @@ ABrick::ABrick()
 
 	HealthThing = CreateDefaultSubobject<UDamageComponent>("DamageComponent");
 
+}
+
+void ABrick::GetLifetimeReplicatedProps(TArray< FLifetimeProperty >& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(ABrick, HealthThing);
 }
 
 // Called when the game starts or when spawned

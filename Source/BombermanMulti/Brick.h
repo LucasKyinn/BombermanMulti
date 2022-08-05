@@ -25,7 +25,7 @@ protected:
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	UStaticMeshComponent* MeshComp;
 
-	UPROPERTY(VisibleAnywhere, BluePrintReadOnly)
+	UPROPERTY(VisibleAnywhere,replicated, BluePrintReadOnly)
 	class UDamageComponent* HealthThing;
 
 
