@@ -4,7 +4,6 @@
 #include "Bomb.h"
 #include "BombermanCharacter.h"
 #include "DamageComponent.h"
-#include "Net/UnrealNetwork.h"
 #include <Kismet/GameplayStatics.h>
 
 
@@ -13,7 +12,7 @@ ABomb::ABomb()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-	bReplicates = false;
+	bReplicates = true;
 	bNetLoadOnClient = true;
 
 	RootScene = CreateDefaultSubobject<USceneComponent>("RootComponent");
@@ -26,16 +25,6 @@ ABomb::ABomb()
 
 	HealthThing = CreateDefaultSubobject<UDamageComponent>("DamageComponent");
 	Owner = nullptr;
-}
-
-void ABomb::GetLifetimeReplicatedProps(TArray< FLifetimeProperty >& OutLifetimeProps) const
-{
-	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
-
-	DOREPLIFETIME(ABomb, PosX);
-	DOREPLIFETIME(ABomb, PosY);
-	DOREPLIFETIME(ABomb, Puissance);
-	DOREPLIFETIME(ABomb, HealthThing);
 }
 
 
@@ -52,16 +41,36 @@ void ABomb::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	if (HealthThing->IsDead()) {
-		//GEngine->AddOnScreenDebugMessage(0, 2.f, FColor::Red, TEXT("DEAD"));
+		if (!HasAuthority()) Server_OnDeath();
+		else Multi_OnDeath();
 
-		//Effects
-		if (ExplosionSound != nullptr && ExplosionParticles!=nullptr) {
-			UGameplayStatics::PlaySoundAtLocation(this, ExplosionSound, GetActorLocation(), 1.0f, 1.f, 0.f);
-			UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ExplosionParticles, GetActorTransform());
-		}
 		Destroy();
 	}
+}
 
+bool ABomb::Server_OnDeath_Validate()
+{
+	return true;
+}
 
+void ABomb::Server_OnDeath_Implementation()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Imple called"));
+	Multi_OnDeath();
+}
+
+bool ABomb::Multi_OnDeath_Validate()
+{
+	return true;
+}
+
+void ABomb::Multi_OnDeath_Implementation()
+{
+	//Effects
+	GEngine->AddOnScreenDebugMessage(0, 5.0, FColor::Red, TEXT("Bomb Died"));
+	if (ExplosionSound != nullptr && ExplosionParticles != nullptr) {
+		UGameplayStatics::PlaySoundAtLocation(this, ExplosionSound, GetActorLocation(), 1.0f, 1.f, 0.f);
+		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ExplosionParticles, GetActorTransform());
+	}
 }
 

@@ -42,7 +42,6 @@ void ABombermanCharacter::BeginPlay()
 	GetCharacterMovement()->RotationRate = FRotator(0.0f, 540.0f, 0.0f); // ...at this rotation rate
 	GetCharacterMovement()->MaxWalkSpeed = 240.f;
 
-
 }
 
 
@@ -218,7 +217,7 @@ bool ABombermanCharacter::Multi_BombAnimation_Validate()
 void ABombermanCharacter::Multi_BombAnimation_Implementation()
 {
 	UAnimInstance* AnimeInstance = GetMesh()->GetAnimInstance();
-	if(!IsLocallyControlled() || !HasAuthority()) AnimeInstance->Montage_Play(BombPlacementAnim, 1.0f);
+	if(!IsLocallyControlled()) AnimeInstance->Montage_Play(BombPlacementAnim, 1.0f);
 }
 
 

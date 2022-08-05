@@ -25,7 +25,7 @@ protected:
 	UPROPERTY(VisibleAnywhere, BluePrintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	USceneComponent* RootScene;
 
-	UPROPERTY(VisibleAnywhere,replicated, BluePrintReadOnly)
+	UPROPERTY(VisibleAnywhere, BluePrintReadOnly)
 	class UDamageComponent* HealthThing; 
 
 	UPROPERTY(EditAnywhere, Category = Sound)
@@ -34,15 +34,24 @@ protected:
 	UPROPERTY(EditAnywhere, Category = Particles)
 	class UParticleSystem* ExplosionParticles;
 
+	//Replication VFX + Sound Better with OnRep ?
+	UFUNCTION(Server, Reliable, WithValidation)
+	void Server_OnDeath();
+	bool Server_OnDeath_Validate();
+	void Server_OnDeath_Implementation();
+
+	UFUNCTION(Server, Reliable, WithValidation)
+	void Multi_OnDeath();
+	bool Multi_OnDeath_Validate();
+	void Multi_OnDeath_Implementation();
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	class AController* Owner;
-	UPROPERTY(replicated)
+
 	int PosX;
-	UPROPERTY(replicated)
 	int PosY;
-	UPROPERTY(replicated)
 	int Puissance;
 };
