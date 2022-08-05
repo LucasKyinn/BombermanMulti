@@ -45,6 +45,8 @@ void ABombermanCharacter::BeginPlay()
 
 }
 
+
+
 // Called every frame
 void ABombermanCharacter::Tick(float DeltaTime)
 {
@@ -89,13 +91,23 @@ void ABombermanCharacter::MoveRight(float Value)
 
 void ABombermanCharacter::Bomb()
 {
-	UAnimInstance* AnimeInstance = GetMesh()->GetAnimInstance();
+	
 	if (!GetWorldTimerManager().IsTimerActive(BombCooldown)) {
-		if (BombClass != nullptr && AnimeInstance != nullptr && BombPlacementAnim != nullptr && TileClass != nullptr) {
+		if (BombClass != nullptr  && BombPlacementAnim != nullptr && TileClass != nullptr) {
 			GetCharacterMovement()->Deactivate();
-			AnimeInstance->Montage_Play(BombPlacementAnim, 1.0f);
 
-			// Nearest Tile
+			//Bomb placement Animation  
+			// DELAY CLIENT ->SERVER 
+			//CLIENT -> CLIENT ET SERVER -> CLIENT FONCTIONNE
+			GetMesh()->GetAnimInstance()->Montage_Play(BombPlacementAnim, 1.0f);
+			if (HasAuthority()) {
+				Multi_BombAnimation();
+			}
+			else{
+				Server_BombAnimation();
+			}
+
+			// Finding Nearest Tile
 			TSet<AActor*> OverlappingActors;
 			float NearsetDistance = 300.f;
 			AActor* NearestActor = this; //Risqué mais dans le contexte on est perma en contacte avec une Tile
@@ -141,11 +153,72 @@ void ABombermanCharacter::SpawnBomb(AActor* NearestActor)
 	ATile* NearestTile = Cast<ATile>(NearestActor);
 	if (NearestTile != nullptr) {
 		if (NearestTile->AsBomb()) {
-			GEngine->AddOnScreenDebugMessage(0, 2.f, FColor::Red, TEXT("AlreadyAsABomb"));
 			GetCharacterMovement()->Activate();
 			return;
 		}
-		NearestTile->SpawnBomb(GetController());
+
+
+		NearestTile->SpawnBomb(GetController()); //Spawn for Localy Controlled
+
+		if (!GetWorld()->IsServer()) {
+			//On Client
+			Server_SpawnBomb(NearestTile);
+		}
+		else {
+			//ON Server
+			Multi_SpawnBomb(NearestTile);
+		}
 	}
 	GetCharacterMovement()->Activate();
 }
+
+
+//Replication 
+
+
+//Bomb
+bool ABombermanCharacter::Server_SpawnBomb_Validate(ATile* ClosestTile)
+{
+	//Any test ?
+	return true;
+}
+
+void ABombermanCharacter::Server_SpawnBomb_Implementation(ATile* ClosestTile)
+{
+
+	Multi_SpawnBomb(ClosestTile); 
+}
+
+bool ABombermanCharacter::Multi_SpawnBomb_Validate(ATile* ClosestTile)
+{
+	return true;
+}
+
+void ABombermanCharacter::Multi_SpawnBomb_Implementation(ATile* ClosestTile)
+{
+	if(!IsLocallyControlled()) ClosestTile->SpawnBomb(GetController()); 
+}
+
+//Animation 
+bool ABombermanCharacter::Server_BombAnimation_Validate()
+{
+	return true;
+}
+
+void ABombermanCharacter::Server_BombAnimation_Implementation()
+{
+	Multi_BombAnimation();
+}
+
+bool ABombermanCharacter::Multi_BombAnimation_Validate()
+{
+	return true;
+}
+
+void ABombermanCharacter::Multi_BombAnimation_Implementation()
+{
+	UAnimInstance* AnimeInstance = GetMesh()->GetAnimInstance();
+	if(!IsLocallyControlled() || !HasAuthority()) AnimeInstance->Montage_Play(BombPlacementAnim, 1.0f);
+}
+
+

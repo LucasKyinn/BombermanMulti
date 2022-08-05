@@ -100,6 +100,7 @@ void ATile::DelegatedRemoveHealth(UDamageComponent* DamageComp, int Damage)
 void ATile::SpawnBomb(AController* OwnerController, int Puissance)
 {
 	//	APlayerController* MyController = Cast<APlayerController>(GetController()); le cast pour plus tard smiley face
+		//SERVER into MultiCAST
 
 	UWorld* World = GetWorld();
 	if (World != nullptr && BombClass != nullptr && bAsBomb == false) {
