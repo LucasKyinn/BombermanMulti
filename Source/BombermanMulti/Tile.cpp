@@ -81,6 +81,8 @@ void ATile::BeginPlay()
 }
 
 
+
+
 // Called every frame
 void ATile::Tick(float DeltaTime)
 {
@@ -90,9 +92,23 @@ void ATile::Tick(float DeltaTime)
 
 void ATile::DelegatedRemoveHealth(UDamageComponent* DamageComp, int Damage)
 {
-	bAsBomb = false;
+	
 	DamageComp->RemoveHealth(Damage);
-	//MapGenerator->TriggerExplosion(PosX, PosY, 2, 'A'); //CA la ici 
+	//MapGenerator->Explosion(PosX, PosY, 2, 'A'); // not on clients 
+	Server_ExplosinCall();
+
+}
+
+bool ATile::Server_ExplosinCall_Validate()
+{
+	return true;
+}
+
+void ATile::Server_ExplosinCall_Implementation()
+{
+	bAsBomb = false;
+	MapGenerator->Explosion(PosX, PosY, 2, 'A');
+
 }
 
 
@@ -139,6 +155,17 @@ bool ATile::AsBomb()
 }
 
 void ATile::Explode()
+{ 
+	Multi_Explode();
+}
+
+
+bool ATile::Multi_Explode_Validate()
+{
+	return true;
+}
+
+void ATile::Multi_Explode_Implementation()
 {
 	if (TileType != 1) { //Tiles Type 1 are indestructible
 		if (ExplosionParticles != nullptr) {
@@ -172,6 +199,4 @@ void ATile::Explode()
 			}
 		}
 	}
-
 }
-

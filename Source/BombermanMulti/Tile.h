@@ -55,6 +55,17 @@ protected:
 	UPROPERTY(EditAnywhere, Category = Particles)
 	class UParticleSystem* ExplosionParticles;
 
+
+	UFUNCTION(Server, Reliable, WithValidation)
+	void Server_ExplosinCall();
+	bool Server_ExplosinCall_Validate();
+	void Server_ExplosinCall_Implementation();
+
+	UFUNCTION(NetMulticast, Reliable, WithValidation)
+	void Multi_Explode();
+	bool Multi_Explode_Validate();
+	void Multi_Explode_Implementation();
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

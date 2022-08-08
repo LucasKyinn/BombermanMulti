@@ -113,6 +113,7 @@ void AMapGenerator::GenerateMap()
 
 }
 
+
 void AMapGenerator::TriggerExplosion(int X, int Y, int Puissance, char Dir)
 {
 	UE_LOG(LogTemp, Warning, TEXT("TriggerExplosion"));
@@ -142,10 +143,24 @@ void AMapGenerator::TriggerExplosion(int X, int Y, int Puissance, char Dir)
 	}
 }
 
+
+
+
+
 // Called every frame
 void AMapGenerator::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+void AMapGenerator::Explosion(int X, int Y, int Puissance, char Dir)
+{
+	//Called on server 
+	//Server_TriggerExplosion(X, Y, Puissance, (uint8) Dir);
+	if (HasAuthority()) {
+		//just in case to be safe
+		TriggerExplosion(X, Y, Puissance, Dir);
+	}
 }
 
