@@ -5,6 +5,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Math/UnrealMathUtility.h"
 #include "Brick.h"
+#include "Net/UnrealNetwork.h"
 #include "Bomb.h"
 #include "DamageComponent.h"
 #include "MapGenerator.h"
@@ -15,6 +16,9 @@
 ATile::ATile()
 {
 	PrimaryActorTick.bCanEverTick = true;
+	bReplicates = true;
+	bNetLoadOnClient = true;
+
 
 	RootScene = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 	if (!ensure(RootScene != nullptr)) return;
@@ -30,10 +34,17 @@ ATile::ATile()
 	if (!ensure(CollisionBox != nullptr)) return;
 	CollisionBox->SetupAttachment(MeshComp);
 
-	TileType = 0;
-	MatType = 0;
-	PosX = 0;
-	PosY = 0;
+}
+
+void ATile::GetLifetimeReplicatedProps(TArray< FLifetimeProperty >& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(ATile, TileType);
+	DOREPLIFETIME(ATile, MatType);
+	DOREPLIFETIME(ATile, PosX);
+	DOREPLIFETIME(ATile, PosY); 
+	DOREPLIFETIME(ATile, bAsBomb);
 }
 
 
@@ -56,14 +67,8 @@ void ATile::BeginPlay()
 					World->SpawnActor<ABrick>(UnbreakabkeBrick, Location, Rotator, SpawnParams);
 				}
 				if (TileType == 2) {
-					int32 Temp = FMath::RandRange(0, 100);
-					//GEngine->AddOnScreenDebugMessage(0, 5.f, FColor::Red, FString::Printf(TEXT("RandRes: %d"), Temp));
-					if (Temp <= 80) {
-						FVector Location = GetActorLocation()+FVector(0.f,0.f,20.f);
-
-						World->SpawnActor<ABrick>(Brick, Location, Rotator, SpawnParams);
-					}
-
+					FVector Location = GetActorLocation() + FVector(0.f, 0.f, 20.f);
+					World->SpawnActor<ABrick>(Brick, Location, Rotator, SpawnParams);
 				}
 			}
 		}
@@ -72,7 +77,10 @@ void ATile::BeginPlay()
 		if (MatType == 0) MeshComp->SetMaterial(0, FirstMat);
 		if (MatType == 1) MeshComp->SetMaterial(0, SecondMat);
 	}
+	
 }
+
+
 
 
 // Called every frame
@@ -84,9 +92,23 @@ void ATile::Tick(float DeltaTime)
 
 void ATile::DelegatedRemoveHealth(UDamageComponent* DamageComp, int Damage)
 {
-	bAsBomb = false;
+	
 	DamageComp->RemoveHealth(Damage);
-	MapGenerator->TriggerExplosion(PosX, PosY, 2, 'A');
+	//MapGenerator->Explosion(PosX, PosY, 2, 'A'); // not on clients 
+	Server_ExplosinCall();
+
+}
+
+bool ATile::Server_ExplosinCall_Validate()
+{
+	return true;
+}
+
+void ATile::Server_ExplosinCall_Implementation()
+{
+	bAsBomb = false;
+	MapGenerator->Explosion(PosX, PosY, 2, 'A');
+
 }
 
 
@@ -94,6 +116,7 @@ void ATile::DelegatedRemoveHealth(UDamageComponent* DamageComp, int Damage)
 void ATile::SpawnBomb(AController* OwnerController, int Puissance)
 {
 	//	APlayerController* MyController = Cast<APlayerController>(GetController()); le cast pour plus tard smiley face
+		//SERVER into MultiCAST
 
 	UWorld* World = GetWorld();
 	if (World != nullptr && BombClass != nullptr && bAsBomb == false) {
@@ -132,6 +155,17 @@ bool ATile::AsBomb()
 }
 
 void ATile::Explode()
+{ 
+	Multi_Explode();
+}
+
+
+bool ATile::Multi_Explode_Validate()
+{
+	return true;
+}
+
+void ATile::Multi_Explode_Implementation()
 {
 	if (TileType != 1) { //Tiles Type 1 are indestructible
 		if (ExplosionParticles != nullptr) {
@@ -165,6 +199,4 @@ void ATile::Explode()
 			}
 		}
 	}
-
 }
-

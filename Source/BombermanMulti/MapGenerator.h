@@ -26,11 +26,14 @@ protected:
 
 	void GenerateMap();
 
+	void TriggerExplosion(int X, int Y, int Puissance, char Dir);
+
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	void TriggerExplosion(int X, int Y, int Puissance, char Dir);
+	void Explosion(int X, int Y, int Puissance, char Dir);
 
 private:
 	const int TileSize = 100;

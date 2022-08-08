@@ -12,6 +12,8 @@ ABomb::ABomb()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	bReplicates = true;
+	bNetLoadOnClient = true;
 
 	RootScene = CreateDefaultSubobject<USceneComponent>("RootComponent");
 	if (!ensure(RootScene != nullptr)) return;
@@ -30,10 +32,7 @@ ABomb::ABomb()
 void ABomb::BeginPlay()
 {
 	Super::BeginPlay();
-	//if (Owner != nullptr)
-	//	GEngine->AddOnScreenDebugMessage(0, 3.f, FColor::Red, TEXT("Has Owner"));
-	//else 
-	//	GEngine->AddOnScreenDebugMessage(0, 3.f, FColor::Red, TEXT("No Owner Bug !"));
+
 }
 
 // Called every frame
@@ -42,16 +41,39 @@ void ABomb::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	if (HealthThing->IsDead()) {
-		//GEngine->AddOnScreenDebugMessage(0, 2.f, FColor::Red, TEXT("DEAD"));
-
-		//Effects
-		if (ExplosionSound != nullptr && ExplosionParticles!=nullptr) {
+		if (ExplosionSound != nullptr && ExplosionParticles != nullptr) {
 			UGameplayStatics::PlaySoundAtLocation(this, ExplosionSound, GetActorLocation(), 1.0f, 1.f, 0.f);
 			UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ExplosionParticles, GetActorTransform());
 		}
+		if (!HasAuthority()) Server_OnDeath();
+		else Multi_OnDeath();
+
 		Destroy();
 	}
+}
 
+bool ABomb::Server_OnDeath_Validate()
+{
+	return true;
+}
 
+void ABomb::Server_OnDeath_Implementation()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Imple called"));
+	Multi_OnDeath();
+}
+
+bool ABomb::Multi_OnDeath_Validate()
+{
+	return true;
+}
+
+void ABomb::Multi_OnDeath_Implementation()
+{
+
+	if (ExplosionSound != nullptr && ExplosionParticles != nullptr) {
+		UGameplayStatics::PlaySoundAtLocation(this, ExplosionSound, GetActorLocation(), 1.0f, 1.f, 0.f);
+		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ExplosionParticles, GetActorTransform());
+	}
 }
 

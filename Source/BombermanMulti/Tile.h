@@ -44,7 +44,7 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Components")
 	TSubclassOf<class ABomb> BombClass;
 
-
+	UPROPERTY(replicated)
 	bool bAsBomb = false;
 
 	class ABomb* Bomb;
@@ -55,20 +55,31 @@ protected:
 	UPROPERTY(EditAnywhere, Category = Particles)
 	class UParticleSystem* ExplosionParticles;
 
+
+	UFUNCTION(Server, Reliable, WithValidation)
+	void Server_ExplosinCall();
+	bool Server_ExplosinCall_Validate();
+	void Server_ExplosinCall_Implementation();
+
+	UFUNCTION(NetMulticast, Reliable, WithValidation)
+	void Multi_Explode();
+	bool Multi_Explode_Validate();
+	void Multi_Explode_Implementation();
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UPROPERTY(VisibleAnywhere, replicated , Category = "Components")
 	int MatType = 0;
 
-	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UPROPERTY(VisibleAnywhere, replicated , Category = "Components")
 	int32 TileType = 0;
 
-	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UPROPERTY(VisibleAnywhere, replicated, Category = "Components")
 	int32 PosX;
 
-	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UPROPERTY(VisibleAnywhere, replicated, Category = "Components")
 	int32 PosY;
 
 	void SpawnBomb(AController* OwnerController, int Puissance = 1);
