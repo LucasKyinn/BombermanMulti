@@ -92,7 +92,7 @@ void ATile::DelegatedRemoveHealth(UDamageComponent* DamageComp, int Damage)
 {
 	bAsBomb = false;
 	DamageComp->RemoveHealth(Damage);
-	MapGenerator->TriggerExplosion(PosX, PosY, 2, 'A');
+	//MapGenerator->TriggerExplosion(PosX, PosY, 2, 'A'); //CA la ici 
 }
 
 

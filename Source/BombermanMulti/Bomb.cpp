@@ -41,6 +41,10 @@ void ABomb::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	if (HealthThing->IsDead()) {
+		if (ExplosionSound != nullptr && ExplosionParticles != nullptr) {
+			UGameplayStatics::PlaySoundAtLocation(this, ExplosionSound, GetActorLocation(), 1.0f, 1.f, 0.f);
+			UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ExplosionParticles, GetActorTransform());
+		}
 		if (!HasAuthority()) Server_OnDeath();
 		else Multi_OnDeath();
 
@@ -66,8 +70,7 @@ bool ABomb::Multi_OnDeath_Validate()
 
 void ABomb::Multi_OnDeath_Implementation()
 {
-	//Effects
-	GEngine->AddOnScreenDebugMessage(0, 5.0, FColor::Red, TEXT("Bomb Died"));
+
 	if (ExplosionSound != nullptr && ExplosionParticles != nullptr) {
 		UGameplayStatics::PlaySoundAtLocation(this, ExplosionSound, GetActorLocation(), 1.0f, 1.f, 0.f);
 		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ExplosionParticles, GetActorTransform());
