@@ -2,6 +2,8 @@
 
 
 #include "BombermannGameInstance.h"
+#include <SocketSubsystem.h>
+#include <IPAddress.h>
 
 void UBombermannGameInstance::Host()
 {
@@ -24,5 +26,22 @@ void UBombermannGameInstance::StartGame()
 	UWorld* World = GetWorld();
 	if (!ensure(World != nullptr))return;
 	if(World->IsServer()) World->ServerTravel("/Game/Maps/BM_Level_1");
+}
+
+void UBombermannGameInstance::IPAdress()
+{
+	bool canBind = false;
+	TSharedRef<FInternetAddr> localIp = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->GetLocalHostAddr(*GLog, canBind);
+
+
+	if (localIp->IsValid()) {
+		UE_LOG(LogTemp, Warning, TEXT("IP : %s"), *localIp->ToString(false));
+		GEngine->AddOnScreenDebugMessage(3, 5.f, FColor::Black, FString::Printf(TEXT("IP :  %s"), *localIp->ToString(false)));
+	} 
+	else {
+		GEngine->AddOnScreenDebugMessage(3, 5.f, FColor::Blue, FString::Printf(TEXT("IP :  ")));
+		UE_LOG(LogTemp, Warning, TEXT("IP : None"));
+
+	}
 }
 

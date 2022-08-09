@@ -24,4 +24,7 @@ public:
 
 	UFUNCTION(Exec)
 	void StartGame();
+
+	UFUNCTION(Exec)
+	void IPAdress();
 };
