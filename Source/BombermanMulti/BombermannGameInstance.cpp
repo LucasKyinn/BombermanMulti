@@ -45,3 +45,10 @@ void UBombermannGameInstance::IPAdress()
 	}
 }
 
+void UBombermannGameInstance::Lobby()
+{
+	UWorld* World = GetWorld();
+	if (!ensure(World != nullptr))return;
+	if (World->IsServer()) World->ServerTravel("/Game/Maps/BM_Level_Loby");
+}
+

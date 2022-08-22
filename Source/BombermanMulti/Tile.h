@@ -66,6 +66,8 @@ protected:
 	bool Multi_Explode_Validate();
 	void Multi_Explode_Implementation();
 
+	UFUNCTION()
+	void DestroyChar(class ABombermanCharacter* Char);
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
