@@ -116,15 +116,15 @@ void AMapGenerator::GenerateMap()
 
 void AMapGenerator::TriggerExplosion(int X, int Y, int Puissance, char Dir)
 {
-	UE_LOG(LogTemp, Warning, TEXT("TriggerExplosion"));
+	//UE_LOG(LogTemp, Warning, TEXT("TriggerExplosion"));
 
 	//l'explosion est suffisament puissante
 	if (Puissance >= 0 ) {
-		UE_LOG(LogTemp, Warning, TEXT("Puissance sup 0"));
+		//UE_LOG(LogTemp, Warning, TEXT("Puissance sup 0"));
 
 		//Explosion ne sort pas du tableau
 		if (X >= 0 && X < BoardSizeW && Y >= 0 && Y < BoardSizeL && TilesArray[X][Y]->TileType != 1) {
-			UE_LOG(LogTemp, Warning, TEXT("InBound"));
+			//UE_LOG(LogTemp, Warning, TEXT("InBound"));
 
 			TilesArray[X][Y]->Explode();
 			if (Dir == 'A') {

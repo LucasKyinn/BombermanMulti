@@ -10,6 +10,7 @@
 #include "DamageComponent.h"
 #include "MapGenerator.h"
 #include "BombermanCharacter.h"
+#include "TimerManager.h"
 #include <Components/BoxComponent.h>
 
 
@@ -194,9 +195,24 @@ void ATile::Multi_Explode_Implementation()
 			if (Char != nullptr) {
 				UDamageComponent* CharDamageComp = Cast<UDamageComponent>(Char->GetComponentByClass(UDamageComponent::StaticClass()));
 				if (CharDamageComp != nullptr) {
-					CharDamageComp->RemoveHealth(1);
+					if (CharDamageComp->RemoveHealth(1)) {
+						Char->SetActorLocation(Char->GetActorLocation() + FVector(0.f, 0.f, -500.f));
+						FTimerHandle DeathDelay;
+						FTimerDelegate Delegate;
+						Delegate.BindUFunction(this, "DestroyChar", Char);
+						GetWorld()->GetTimerManager().SetTimer(DeathDelay, Delegate,3.f,false);
+					}
 				}
 			}
 		}
 	}
+}
+
+void ATile::DestroyChar(ABombermanCharacter* Char)
+{
+	if (Char != nullptr) {
+		Char->Destroy();
+		//UE_LOG(LogTemp, Warning, TEXT("Destroy"));
+	}
+
 }

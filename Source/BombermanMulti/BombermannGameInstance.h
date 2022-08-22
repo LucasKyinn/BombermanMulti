@@ -27,4 +27,7 @@ public:
 
 	UFUNCTION(Exec)
 	void IPAdress();
+
+	UFUNCTION(Exec)
+	void Lobby();
 };
