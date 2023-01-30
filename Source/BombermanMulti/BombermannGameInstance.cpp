@@ -23,9 +23,12 @@ void UBombermannGameInstance::Join(const FString& Address)
 
 void UBombermannGameInstance::StartGame()
 {
+	GEngine->AddOnScreenDebugMessage(1, 5.f, FColor::Blue, TEXT("TEST 1"));
 	UWorld* World = GetWorld();
 	if (!ensure(World != nullptr))return;
 	if(World->IsServer()) World->ServerTravel("/Game/Maps/BM_Level_1");
+	GEngine->AddOnScreenDebugMessage(1, 5.f, FColor::Green, TEXT("TEST 2"));
+
 }
 
 void UBombermannGameInstance::IPAdress()

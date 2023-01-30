@@ -21,6 +21,8 @@ void AMapGenerator::BeginPlay()
 {
 	Super::BeginPlay();
 	
+
+	//////////////////////// INUTILE MAINTENANT
 	if (HasAuthority()) {
 		//File exist (Copy pasted from the internet)
 		if (FileManager.FileExists(*File))
@@ -50,6 +52,7 @@ void AMapGenerator::BeginPlay()
 
 void AMapGenerator::GenerateMap()
 {
+	FString TestMap = "00222222222000121212121210222222222222221212121212122222222222222212121212121222222222222222121212121212222222222222201212121212100022222222200";
 	int PosX = 0, PosY = 0 , Mat = 0 , Poof = 0;
 	FVector SpawnLocation(-600.f,-500.f,0.f);
 	FActorSpawnParameters SpawnParam;
@@ -70,18 +73,22 @@ void AMapGenerator::GenerateMap()
 			SpawnedTile->PosX = PosX; 
 			SpawnedTile->PosY = PosY;
 
-			if (FileContent[Poof] - 48 == 2) {
+
+			////////////////////////////////////// CRASH SI FILE MANIP QUAND PACKAGE
+			if (TestMap[Poof] - 48 == 2) {
 				int32 RandNum = FMath::RandRange(0, 100);
 				if (RandNum <= 80) {
-					SpawnedTile->TileType = FileContent[Poof] - 48; //Ugly but it works cant make TCString::Atoi work so whatever 
+					SpawnedTile->TileType = TestMap[Poof] - 48; //Ugly but it works cant make TCString::Atoi work so whatever 
 				}
 				else {
 					SpawnedTile->TileType = 0;
 				}
 			}
 			else {
-				SpawnedTile->TileType = FileContent[Poof] - 48;
+				SpawnedTile->TileType = TestMap[Poof] - 48;
 			}
+			//////////////////////////////////////
+
 
 
 			//SpawnedTile->TileType = FileContent[Poof]-48; //Ugly but it works cant make TCString::Atoi work so whatever 

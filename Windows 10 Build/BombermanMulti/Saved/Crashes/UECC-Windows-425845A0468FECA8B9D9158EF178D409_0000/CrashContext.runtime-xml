@@ -1,0 +1,919 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FGenericCrashContext>
+<RuntimeProperties>
+<CrashVersion>3</CrashVersion>
+<ExecutionGuid>FDB39C8B4B1D9C70E83AEF9C22F7EBDE</ExecutionGuid>
+<CrashGUID>UECC-Windows-425845A0468FECA8B9D9158EF178D409_0000</CrashGUID>
+<IsEnsure>false</IsEnsure>
+<IsStall>false</IsStall>
+<IsAssert>true</IsAssert>
+<CrashType>Assert</CrashType>
+<ErrorMessage>Assertion failed: IsValidIndex(Index) [File:C:\Program Files\Epic Games\UE_5.0\Engine\Source\Runtime\Core\Public\Containers\UnrealString.h] [Line: 215] 
+String index out of bounds: Index 0 from a string with a length of 0
+</ErrorMessage>
+<CrashReporterMessage></CrashReporterMessage>
+<ProcessId>22076</ProcessId>
+<SecondsSinceStart>0</SecondsSinceStart>
+<IsInternalBuild>false</IsInternalBuild>
+<IsPerforceBuild>false</IsPerforceBuild>
+<IsSourceDistribution>false</IsSourceDistribution>
+<GameName>UE5-BombermanMulti</GameName>
+<ExecutableName>BombermanMulti-Win64-DebugGame</ExecutableName>
+<BuildConfiguration>DebugGame</BuildConfiguration>
+<GameSessionID></GameSessionID>
+<PlatformName>Windows</PlatformName>
+<PlatformNameIni>Windows</PlatformNameIni>
+<EngineMode>Game</EngineMode>
+<EngineModeEx>Unset</EngineModeEx>
+<DeploymentName></DeploymentName>
+<EngineVersion>5.0.3-20979098+++UE5+Release-5.0</EngineVersion>
+<CommandLine> BombermanMulti</CommandLine>
+<LanguageLCID>0</LanguageLCID>
+<AppDefaultLocale>fr-FR</AppDefaultLocale>
+<BuildVersion>++UE5+Release-5.0-CL-20979098</BuildVersion>
+<Symbols>**UE5*Release-5.0-CL-20979098-Win64-DebugGame</Symbols>
+<IsUERelease>false</IsUERelease>
+<IsRequestingExit>false</IsRequestingExit>
+<UserName></UserName>
+<BaseDir>C:/Users/Reale/Documents/GitHub/BombermanMulti/Windows/BombermanMulti/Binaries/Win64/</BaseDir>
+<RootDir>C:/Users/Reale/Documents/GitHub/BombermanMulti/Windows/</RootDir>
+<MachineId>C669FEAC4BDCBD6DD1B16785DC32843D</MachineId>
+<LoginId>c669feac4bdcbd6dd1b16785dc32843d</LoginId>
+<EpicAccountId>fb607b480a8c4f4a97c39dc0202a4994</EpicAccountId>
+<SourceContext></SourceContext>
+<UserDescription></UserDescription>
+<UserActivityHint></UserActivityHint>
+<CrashDumpMode>0</CrashDumpMode>
+<GameStateName></GameStateName>
+<Misc.NumberOfCores>8</Misc.NumberOfCores>
+<Misc.NumberOfCoresIncludingHyperthreads>16</Misc.NumberOfCoresIncludingHyperthreads>
+<Misc.Is64bitOperatingSystem>1</Misc.Is64bitOperatingSystem>
+<Misc.CPUVendor>GenuineIntel</Misc.CPUVendor>
+<Misc.CPUBrand>Intel(R) Core(TM) i7-10700 CPU @ 2.90GHz</Misc.CPUBrand>
+<Misc.PrimaryGPUBrand>NVIDIA Quadro RTX 3000</Misc.PrimaryGPUBrand>
+<Misc.OSVersionMajor>Windows 10 (21H2) [10.0.19044.2364]</Misc.OSVersionMajor>
+<Misc.OSVersionMinor></Misc.OSVersionMinor>
+<MemoryStats.TotalPhysical>34125086720</MemoryStats.TotalPhysical>
+<MemoryStats.TotalVirtual>39225360384</MemoryStats.TotalVirtual>
+<MemoryStats.PageSize>4096</MemoryStats.PageSize>
+<MemoryStats.TotalPhysicalGB>32</MemoryStats.TotalPhysicalGB>
+<MemoryStats.AvailablePhysical>19090812928</MemoryStats.AvailablePhysical>
+<MemoryStats.AvailableVirtual>15521308672</MemoryStats.AvailableVirtual>
+<MemoryStats.UsedPhysical>390283264</MemoryStats.UsedPhysical>
+<MemoryStats.PeakUsedPhysical>390287360</MemoryStats.PeakUsedPhysical>
+<MemoryStats.UsedVirtual>680259584</MemoryStats.UsedVirtual>
+<MemoryStats.PeakUsedVirtual>680259584</MemoryStats.PeakUsedVirtual>
+<MemoryStats.bIsOOM>0</MemoryStats.bIsOOM>
+<MemoryStats.OOMAllocationSize>0</MemoryStats.OOMAllocationSize>
+<MemoryStats.OOMAllocationAlignment>0</MemoryStats.OOMAllocationAlignment>
+<NumMinidumpFramesToIgnore>6</NumMinidumpFramesToIgnore>
+<CallStack></CallStack>
+<PCallStack>
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 8ee3b33         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e6dffd         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e6da21         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 694f69e         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 7b1fdaf         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 6faf561         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 7ac471e         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 79aede3         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 7958e0c         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 6f73a0f         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + ac5ed8          
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + ae257e          
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + ae275a          
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + ae57dc          
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + af6fa4          
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 8b75e3a         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</PCallStack>
+<PCallStackHash>9AD0306818758B00A7DAC8A871DE8C2B042B6306</PCallStackHash>
+<Threads><Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24e671d         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 8baa2ae         
+VCRUNTIME140                    0x00007ffc71ec0000 + efc0            
+ntdll                           0x00007ffc99fb0000 + a241f           
+ntdll                           0x00007ffc99fb0000 + 514a4           
+ntdll                           0x00007ffc99fb0000 + 511f5           
+KERNELBASE                      0x00007ffc97b50000 + 2cd29           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24ea5fa         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2180e3d         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 210f225         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2110090         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 8ee3f3d         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 8ee3b33         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e6dffd         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e6da21         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 694f69e         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 7b1fdaf         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 6faf561         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 7ac471e         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 79aede3         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 7958e0c         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 6f73a0f         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + ac5ed8          
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + ae257e          
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + ae275a          
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + ae57dc          
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + af6fa4          
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 8b75e3a         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>true</IsCrashed>
+<Registers></Registers>
+<ThreadID>19624</ThreadID>
+<ThreadName>GameThread</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec32a7         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec5159         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e98dc0         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>24936</ThreadID>
+<ThreadName>Foreground Worker #0</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec32a7         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec5159         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e98dc0         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>27816</ThreadID>
+<ThreadName>Foreground Worker #1</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec32a7         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec5159         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e98dc0         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>13844</ThreadID>
+<ThreadName>Background Worker #2</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec32a7         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec5159         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e98dc0         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>12408</ThreadID>
+<ThreadName>Background Worker #3</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec32a7         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec5159         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e98dc0         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>19304</ThreadID>
+<ThreadName>Background Worker #4</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec32a7         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec5159         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e98dc0         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>9768</ThreadID>
+<ThreadName>Background Worker #5</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec32a7         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec5159         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e98dc0         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>2080</ThreadID>
+<ThreadName>Background Worker #6</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec32a7         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec5159         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e98dc0         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>12276</ThreadID>
+<ThreadName>Background Worker #7</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec32a7         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec5159         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e98dc0         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>11852</ThreadID>
+<ThreadName>Background Worker #8</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec32a7         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec5159         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e98dc0         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>24224</ThreadID>
+<ThreadName>Background Worker #9</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec32a7         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec5159         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e98dc0         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>20504</ThreadID>
+<ThreadName>Background Worker #10</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec32a7         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec5159         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e98dc0         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>10768</ThreadID>
+<ThreadName>Background Worker #11</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec32a7         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec5159         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e98dc0         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>19252</ThreadID>
+<ThreadName>Background Worker #12</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec32a7         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ec5159         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e98dc0         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>2936</ThreadID>
+<ThreadName>Background Worker #13</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fde859         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>24960</ThreadID>
+<ThreadName>BackgroundThreadPool #0</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fde859         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>22028</ThreadID>
+<ThreadName>BackgroundThreadPool #1</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e94cbf         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>9588</ThreadID>
+<ThreadName>Reserve Worker #0</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e94cbf         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>19588</ThreadID>
+<ThreadName>Reserve Worker #1</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e94cbf         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>7924</ThreadID>
+<ThreadName>Reserve Worker #2</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e94cbf         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>26260</ThreadID>
+<ThreadName>Reserve Worker #3</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e94cbf         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>14700</ThreadID>
+<ThreadName>Reserve Worker #4</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e94cbf         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>940</ThreadID>
+<ThreadName>Reserve Worker #5</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e94cbf         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>27724</ThreadID>
+<ThreadName>Reserve Worker #6</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e94cbf         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>8588</ThreadID>
+<ThreadName>Reserve Worker #7</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e94cbf         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>8420</ThreadID>
+<ThreadName>Reserve Worker #8</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e94cbf         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>1700</ThreadID>
+<ThreadName>Reserve Worker #9</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e94cbf         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>28144</ThreadID>
+<ThreadName>Reserve Worker #10</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e94cbf         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>22040</ThreadID>
+<ThreadName>Reserve Worker #11</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e94cbf         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>18220</ThreadID>
+<ThreadName>Reserve Worker #12</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1e94cbf         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fdebb5         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>2292</ThreadID>
+<ThreadName>Reserve Worker #13</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d744           
+KERNELBASE                      0x00007ffc97b50000 + 4b16e           
+tmmon64                         0x0000000054d80000 + 22d1c           
+tmmon64                         0x0000000054d80000 + 280b5132040     
+tmmon64                         0x0000000054d80000 + 280b63ca348     
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 218f065         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>15284</ThreadID>
+<ThreadName>FAsyncWriter_BombermanMulti</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 683aa4c         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>21652</ThreadID>
+<ThreadName>FMediaTicker</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d744           
+KERNELBASE                      0x00007ffc97b50000 + 4b16e           
+tmmon64                         0x0000000054d80000 + 22d1c           
+tmmon64                         0x0000000054d80000 + 280b51321c0     
+tmmon64                         0x0000000054d80000 + 280b90d9c00     
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2964301         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>12404</ThreadID>
+<ThreadName>HttpManagerThread</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1b7fa26         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>13076</ThreadID>
+<ThreadName>OnlineAsyncTaskThreadNull DefaultInstance(1)</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fde859         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>5376</ThreadID>
+<ThreadName>IOThreadPool #0</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fde859         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>12384</ThreadID>
+<ThreadName>IOThreadPool #1</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fde859         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>1092</ThreadID>
+<ThreadName>IOThreadPool #2</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1fde859         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>20876</ThreadID>
+<ThreadName>IOThreadPool #3</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 6784572         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>19048</ThreadID>
+<ThreadName>IoService</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 20a9973         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>28436</ThreadID>
+<ThreadName>IoDispatcher</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ebb520         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ebbd2e         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ebc0d1         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 5cc782a         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>23540</ThreadID>
+<ThreadName>RHIThread</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ebb520         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ebbd2e         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 1ebc0d1         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 5cc4c8f         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 5cc78a1         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>25204</ThreadID>
+<ThreadName>RenderThread 0</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll       0x00007ffc99fb0000 + 9d744           
+KERNELBASE  0x00007ffc97b50000 + 4b16e           
+tmmon64     0x0000000054d80000 + 22d1c           
+tmmon64     0x0000000054d80000 + 280b5132340     
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>25224</ThreadID>
+<ThreadName>RTHeartBeat 0</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 316583c         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>26672</ThreadID>
+<ThreadName>FMessageBus.DefaultBus.Router</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 26e7c34         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 26e7bf6         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 26265ba         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>13104</ThreadID>
+<ThreadName>FAsyncLoadingThread</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 8342332         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>27688</ThreadID>
+<ThreadName>FFileTransferRunnable</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll       0x00007ffc99fb0000 + 9d744           
+KERNELBASE  0x00007ffc97b50000 + 4b16e           
+tmmon64     0x0000000054d80000 + 22d1c           
+tmmon64     0x0000000054d80000 + 280b5132640     
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>13300</ThreadID>
+<ThreadName>ScreenSaverInhibitor</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 6175d2b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>21552</ThreadID>
+<ThreadName>AudioMixerNullCallbackThread</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 6176203         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 61760a1         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>27836</ThreadID>
+<ThreadName>AudioMixerRenderThread(1)</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll                           0x00007ffc99fb0000 + 9d144           
+KERNELBASE                      0x00007ffc97b50000 + 2306e           
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2505552         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 2797be2         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 250234b         
+BombermanMulti-Win64-DebugGame  0x00007ff7ed850000 + 24fafc0         
+KERNEL32                        0x00007ffc99780000 + 17614           
+ntdll                           0x00007ffc99fb0000 + 526a1           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>1348</ThreadID>
+<ThreadName>FAsyncPurge</ThreadName>
+</Thread>
+</Threads>
+</RuntimeProperties>
+<PlatformProperties>
+<PlatformIsRunningWindows>1</PlatformIsRunningWindows>
+<IsRunningOnBattery>false</IsRunningOnBattery>
+<PlatformCallbackResult>0</PlatformCallbackResult>
+</PlatformProperties>
+<EngineData>
+<MatchingDPStatus_Windows>No errors</MatchingDPStatus_Windows>
+<RHI.IntegratedGPU>false</RHI.IntegratedGPU>
+<RHI.D3DDebug>false</RHI.D3DDebug>
+<RHI.Breadcrumbs>true</RHI.Breadcrumbs>
+<RHI.DRED>false</RHI.DRED>
+<RHI.DREDContext>false</RHI.DREDContext>
+<RHI.Aftermath>true</RHI.Aftermath>
+<RHI.RHIName>D3D12</RHI.RHIName>
+<RHI.AdapterName>NVIDIA Quadro RTX 3000</RHI.AdapterName>
+<RHI.UserDriverVersion>517.40</RHI.UserDriverVersion>
+<RHI.InternalDriverVersion>31.0.15.1740</RHI.InternalDriverVersion>
+<RHI.DriverDate>9-12-2022</RHI.DriverDate>
+<RHI.FeatureLevel>SM5</RHI.FeatureLevel>
+<RHI.GPUVendor>NVIDIA</RHI.GPUVendor>
+<RHI.DriverBlacklisted>false</RHI.DriverBlacklisted>
+<DeviceProfile.Name>Windows</DeviceProfile.Name>
+</EngineData>
+<GameData>
+</GameData>
+</FGenericCrashContext>
